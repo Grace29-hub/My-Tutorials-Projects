@@ -1,0 +1,11 @@
+<button class="btn btn-success" @onclick="onClick" @attributes="AdditionalAttributes">@childContent</button>
+@code {
+    [Parameter]
+    public EventCallback<MouseEventArgs> onClick {get; set;}
+    
+    [Parameter]
+    public RenderFragment childContent {get; set;}
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> AdditionalAttributes {get; set;}
+}

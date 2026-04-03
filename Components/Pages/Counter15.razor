@@ -1,0 +1,38 @@
+@page "/counter15/{initialCount:int?}"
+@page "/Counter16"
+@rendermode InteractiveServer
+
+<PageTitle>Counter15</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current Count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click Me!</button>
+
+@if (currentCount > 5){
+    <p>Good Job!</p>
+}
+
+<ul>
+@for (int i = 0; i < currentCount; i++){
+    <li>Keep going!</li>
+}
+</ul>
+
+<p>Start Count:@InitialCount</p>
+
+@code {
+    protected override void OnInitialized()
+    {
+        currentCount=InitialCount;
+    }
+    [Parameter]
+    public int InitialCount {get; set;}
+
+    private int currentCount = 0;
+    private void IncrementCount(MouseEventArgs e)
+    {
+        currentCount++;
+    }
+}
